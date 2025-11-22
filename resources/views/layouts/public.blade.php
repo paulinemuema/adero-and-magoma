@@ -55,12 +55,25 @@
     <!-- Vite Assets -->
     @if(app()->environment('production'))
         @php
-            $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
-            $cssFile = $manifest['resources/css/public.css']['file'] ?? 'assets/public-hs9Cu0jg.css';
-            $jsFile = $manifest['resources/js/public.js']['file'] ?? 'assets/public-BVyuNFMk.js';
+            try {
+                $manifestPath = public_path('build/manifest.json');
+                if (file_exists($manifestPath)) {
+                    $manifest = json_decode(file_get_contents($manifestPath), true);
+                    $cssFile = $manifest['resources/css/public.css']['file'] ?? 'assets/public-hs9Cu0jg.css';
+                    $jsFile = $manifest['resources/js/public.js']['file'] ?? 'assets/public-BVyuNFMk.js';
+                } else {
+                    // Fallback if manifest doesn't exist
+                    $cssFile = 'assets/public-hs9Cu0jg.css';
+                    $jsFile = 'assets/public-BVyuNFMk.js';
+                }
+            } catch (\Exception $e) {
+                // Fallback on error
+                $cssFile = 'assets/public-hs9Cu0jg.css';
+                $jsFile = 'assets/public-BVyuNFMk.js';
+            }
         @endphp
-        <link rel="stylesheet" href="{{ asset('build/' . $cssFile) }}">
-        <script type="module" src="{{ asset('build/' . $jsFile) }}"></script>
+        <link rel="stylesheet" href="{{ url('build/' . $cssFile) }}">
+        <script type="module" src="{{ url('build/' . $jsFile) }}"></script>
     @else
         @vite(['resources/css/public.css', 'resources/js/public.js'])
     @endif

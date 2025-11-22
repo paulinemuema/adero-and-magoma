@@ -70,22 +70,34 @@ RUN echo '#!/bin/sh' > /start.sh && \
     echo 'echo "Updating .env with environment variables..."' >> /start.sh && \
     echo 'if [ -n "$APP_KEY" ]; then' >> /start.sh && \
     echo '  echo "Setting APP_KEY from environment..."' >> /start.sh && \
-    echo '  sed -i "s|APP_KEY=.*|APP_KEY=$APP_KEY|" .env 2>/dev/null || echo "APP_KEY=$APP_KEY" >> .env' >> /start.sh && \
+    echo '  grep -v "^APP_KEY=" .env > .env.tmp 2>/dev/null || true' >> /start.sh && \
+    echo '  echo "APP_KEY=$APP_KEY" >> .env.tmp' >> /start.sh && \
+    echo '  mv .env.tmp .env' >> /start.sh && \
     echo 'fi' >> /start.sh && \
     echo 'if [ -n "$APP_ENV" ]; then' >> /start.sh && \
-    echo '  sed -i "s|APP_ENV=.*|APP_ENV=$APP_ENV|" .env 2>/dev/null || echo "APP_ENV=$APP_ENV" >> .env' >> /start.sh && \
+    echo '  grep -v "^APP_ENV=" .env > .env.tmp 2>/dev/null || true' >> /start.sh && \
+    echo '  echo "APP_ENV=$APP_ENV" >> .env.tmp' >> /start.sh && \
+    echo '  mv .env.tmp .env' >> /start.sh && \
     echo 'fi' >> /start.sh && \
     echo 'if [ -n "$APP_DEBUG" ]; then' >> /start.sh && \
-    echo '  sed -i "s|APP_DEBUG=.*|APP_DEBUG=$APP_DEBUG|" .env 2>/dev/null || echo "APP_DEBUG=$APP_DEBUG" >> .env' >> /start.sh && \
+    echo '  grep -v "^APP_DEBUG=" .env > .env.tmp 2>/dev/null || true' >> /start.sh && \
+    echo '  echo "APP_DEBUG=$APP_DEBUG" >> .env.tmp' >> /start.sh && \
+    echo '  mv .env.tmp .env' >> /start.sh && \
     echo 'fi' >> /start.sh && \
     echo 'if [ -n "$APP_URL" ]; then' >> /start.sh && \
-    echo '  sed -i "s|APP_URL=.*|APP_URL=$APP_URL|" .env 2>/dev/null || echo "APP_URL=$APP_URL" >> .env' >> /start.sh && \
+    echo '  grep -v "^APP_URL=" .env > .env.tmp 2>/dev/null || true' >> /start.sh && \
+    echo '  echo "APP_URL=$APP_URL" >> .env.tmp' >> /start.sh && \
+    echo '  mv .env.tmp .env' >> /start.sh && \
     echo 'fi' >> /start.sh && \
     echo 'if [ -n "$DB_CONNECTION" ]; then' >> /start.sh && \
-    echo '  sed -i "s|DB_CONNECTION=.*|DB_CONNECTION=$DB_CONNECTION|" .env 2>/dev/null || echo "DB_CONNECTION=$DB_CONNECTION" >> .env' >> /start.sh && \
+    echo '  grep -v "^DB_CONNECTION=" .env > .env.tmp 2>/dev/null || true' >> /start.sh && \
+    echo '  echo "DB_CONNECTION=$DB_CONNECTION" >> .env.tmp' >> /start.sh && \
+    echo '  mv .env.tmp .env' >> /start.sh && \
     echo 'fi' >> /start.sh && \
     echo 'if [ -n "$DB_DATABASE" ]; then' >> /start.sh && \
-    echo '  sed -i "s|DB_DATABASE=.*|DB_DATABASE=$DB_DATABASE|" .env 2>/dev/null || echo "DB_DATABASE=$DB_DATABASE" >> .env' >> /start.sh && \
+    echo '  grep -v "^DB_DATABASE=" .env > .env.tmp 2>/dev/null || true' >> /start.sh && \
+    echo '  echo "DB_DATABASE=$DB_DATABASE" >> .env.tmp' >> /start.sh && \
+    echo '  mv .env.tmp .env' >> /start.sh && \
     echo 'fi' >> /start.sh && \
     echo 'echo "Creating database directory and file..."' >> /start.sh && \
     echo 'mkdir -p /var/www/html/database' >> /start.sh && \
