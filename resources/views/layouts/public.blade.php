@@ -71,14 +71,13 @@
                 $cssFile = 'assets/public-hs9Cu0jg.css';
                 $jsFile = 'assets/public-BVyuNFMk.js';
             }
-            // Ensure HTTPS URLs
-            $cssUrl = asset('build/' . $cssFile);
-            $jsUrl = asset('build/' . $jsFile);
-            // Force HTTPS if APP_URL is HTTPS
-            if (config('app.url') && str_starts_with(config('app.url'), 'https://')) {
-                $cssUrl = str_replace('http://', 'https://', $cssUrl);
-                $jsUrl = str_replace('http://', 'https://', $jsUrl);
+            // Force HTTPS URLs - use secure_asset or manually construct HTTPS URL
+            $baseUrl = config('app.url', request()->getSchemeAndHttpHost());
+            if (!str_starts_with($baseUrl, 'https://')) {
+                $baseUrl = 'https://' . parse_url($baseUrl, PHP_URL_HOST) . (parse_url($baseUrl, PHP_URL_PORT) ? ':' . parse_url($baseUrl, PHP_URL_PORT) : '');
             }
+            $cssUrl = rtrim($baseUrl, '/') . '/build/' . $cssFile;
+            $jsUrl = rtrim($baseUrl, '/') . '/build/' . $jsFile;
         @endphp
         <link rel="stylesheet" href="{{ $cssUrl }}">
         <script type="module" src="{{ $jsUrl }}"></script>
