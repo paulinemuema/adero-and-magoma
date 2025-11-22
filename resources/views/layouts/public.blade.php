@@ -53,30 +53,17 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollToPlugin.min.js"></script>
     
     <!-- Vite Assets -->
-    @vite(['resources/css/public.css', 'resources/js/public.js'])
-    
-    <!-- Production fallback - load from manifest if @vite fails -->
-    @production
+    @if(app()->environment('production'))
         @php
-            try {
-                $manifestPath = public_path('build/manifest.json');
-                if (file_exists($manifestPath)) {
-                    $manifest = json_decode(file_get_contents($manifestPath), true);
-                    $cssFile = $manifest['resources/css/public.css']['file'] ?? null;
-                    $jsFile = $manifest['resources/js/public.js']['file'] ?? null;
-                    
-                    if ($cssFile && !str_contains(request()->header('Accept', ''), 'text/html')) {
-                        echo '<link rel="stylesheet" href="' . asset('build/' . $cssFile) . '">';
-                    }
-                    if ($jsFile) {
-                        echo '<script type="module" src="' . asset('build/' . $jsFile) . '"></script>';
-                    }
-                }
-            } catch (\Exception $e) {
-                // Silently fail, @vite will handle it
-            }
+            $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+            $cssFile = $manifest['resources/css/public.css']['file'] ?? 'assets/public-hs9Cu0jg.css';
+            $jsFile = $manifest['resources/js/public.js']['file'] ?? 'assets/public-BVyuNFMk.js';
         @endphp
-    @endproduction
+        <link rel="stylesheet" href="{{ asset('build/' . $cssFile) }}">
+        <script type="module" src="{{ asset('build/' . $jsFile) }}"></script>
+    @else
+        @vite(['resources/css/public.css', 'resources/js/public.js'])
+    @endif
     
     @stack('head_meta')
     @stack('styles')
