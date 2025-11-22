@@ -1,6 +1,68 @@
 @extends('layouts.public')
 
 @section('title', 'Employment Rights in Kenya 2025 | Adams & Magoma Advocates')
+@section('description', 'Complete guide to employment rights in Kenya 2025. Learn about labor laws, employee rights, workplace disputes, and employment contracts. Expert employment law advice from Adams & Magoma Advocates.')
+@section('keywords', 'employment rights Kenya, labor law Kenya, employment contracts, workplace disputes, employment lawyer Nairobi')
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Employment Rights in Kenya 2025",
+      "description": "Complete guide to employment rights in Kenya covering labor laws, employee rights, and workplace disputes.",
+      "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "datePublished": "2025-11-28",
+      "dateModified": "2025-11-28",
+      "author": {
+        "@type": "Person",
+        "name": "Magoma",
+        "jobTitle": "Partner & Employment Law Specialist"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Adams & Magoma Advocates",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ asset('assets/images/logo_law.jpg') }}"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url()->current() }}"
+      },
+      "articleSection": "Employment Law",
+      "keywords": "employment rights, labor law, employment contracts, workplace disputes"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ route('home') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "{{ route('blogs') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Employment Rights in Kenya 2025",
+          "item": "{{ url()->current() }}"
+        }
+      ]
+    }
+  ]
+}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />

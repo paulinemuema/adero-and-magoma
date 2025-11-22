@@ -53,7 +53,7 @@
                         <div style="color: var(--text-light); font-size: 0.9rem;">Cases Successfully Resolved</div>
                     </div>
                     <div class="stat-item" style="text-align: center;">
-                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-right: 0.5rem;"></i>25+</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-right: 0.5rem;"></i>4+</div>
                         <div style="color: var(--text-light); font-size: 0.9rem;">Years Combined Experience</div>
                     </div>
                 </div>
@@ -208,11 +208,11 @@
         <div class="attorneys-grid" style="max-width: 1000px; margin: 0 auto;">
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">JA</div>
+                    <div class="attorney-placeholder">BA</div>
                 </div>
-                <h3 class="attorney-name">James Adams</h3>
+                <h3 class="attorney-name">Brian Adams Adero</h3>
                 <div class="attorney-role">Senior Partner & Lead Litigator</div>
-                <p class="attorney-bio">Leading complex litigation matters with 20+ years of courtroom experience and successful appellate practice across Kenya.</p>
+                <p class="attorney-bio">Leading complex litigation matters with strong courtroom experience and successful practice across Kenya.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Advocate of the High Court</span>
@@ -221,11 +221,11 @@
 
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">MM</div>
+                    <div class="attorney-placeholder">M</div>
                 </div>
-                <h3 class="attorney-name">Margaret Magoma</h3>
+                <h3 class="attorney-name">Magoma</h3>
                 <div class="attorney-role">Partner & Commercial Litigation Specialist</div>
-                <p class="attorney-bio">Specialized in commercial disputes and arbitration with extensive experience in corporate litigation and alternative dispute resolution.</p>
+                <p class="attorney-bio">Specialized in commercial disputes and arbitration with strong experience in corporate litigation and alternative dispute resolution.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Certified Arbitrator</span>
@@ -372,10 +372,20 @@
     <section class="section cta-section">
         <div class="bg-pattern"></div>
         <h2 class="cta-title">Need Litigation <span>Support?</span></h2>
-        <p class="cta-description">Contact us for aggressive and effective representation in your legal disputes.</p>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="{{ route('contact') }}" class="btn btn-primary" style="margin-right: 1rem;">Schedule Consultation</a>
-            <a href="tel:+254700123456" class="btn btn-secondary">Call +254 700 123 456</a>
+        <p class="cta-description">Get started today with a free case assessment or book a consultation with our litigation experts.</p>
+        <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ route('book-appointment') }}" class="btn btn-primary">
+                <span>Book Appointment</span>
+                <i class="fas fa-calendar-check"></i>
+            </a>
+            <a href="{{ route('case-evaluation') }}" class="btn btn-secondary">
+                <span>Get Free Assessment</span>
+                <i class="fas fa-clipboard-check"></i>
+            </a>
+            <a href="tel:+254700123456" class="btn btn-outline-light">
+                <span>Call Us</span>
+                <i class="fas fa-phone"></i>
+            </a>
         </div>
     </section>
 

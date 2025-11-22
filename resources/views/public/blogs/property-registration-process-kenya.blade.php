@@ -1,6 +1,68 @@
 @extends('layouts.public')
 
 @section('title', 'Property Registration Process in Kenya | Adams & Magoma Advocates')
+@section('description', 'Complete guide to property registration in Kenya. Learn about land registration, title deeds, property transfer, and real estate legal requirements. Expert real estate law advice from Adams & Magoma Advocates.')
+@section('keywords', 'property registration Kenya, land registration, title deeds Kenya, property transfer, real estate lawyer Nairobi')
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Property Registration Process in Kenya",
+      "description": "Complete guide to property registration in Kenya covering land registration, title deeds, and property transfer procedures.",
+      "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "datePublished": "2025-11-20",
+      "dateModified": "2025-11-20",
+      "author": {
+        "@type": "Person",
+        "name": "Magoma",
+        "jobTitle": "Partner & Real Estate Law Specialist"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Adams & Magoma Advocates",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ asset('assets/images/logo_law.jpg') }}"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url()->current() }}"
+      },
+      "articleSection": "Real Estate Law",
+      "keywords": "property registration, land registration, title deeds, property transfer"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ route('home') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "{{ route('blogs') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Property Registration Process in Kenya",
+          "item": "{{ url()->current() }}"
+        }
+      ]
+    }
+  ]
+}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />
@@ -52,11 +114,11 @@
                 
                 <div class="article-author-header">
                     <div class="author-avatar-small">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80&q=80" alt="James Adams">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80&q=80" alt="Magoma">
                     </div>
                     <div class="author-info-small">
-                        <h4 class="author-name">James Adams</h4>
-                        <p class="author-role">Senior Partner & Real Estate Law Specialist</p>
+                        <h4 class="author-name">Magoma</h4>
+                        <p class="author-role">Managing Partner & Real Estate Law Specialist</p>
                     </div>
                 </div>
 
@@ -241,12 +303,12 @@
                     <!-- Author Bio -->
                     <div class="article-author-bio">
                         <div class="author-bio-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80" alt="James Adams">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80" alt="Magoma">
                         </div>
                         <div class="author-bio-content">
-                            <h4>About James Adams</h4>
+                            <h4>About Magoma</h4>
                             <p>
-                                James Adams is a Senior Partner at Adams & Magoma Advocates with extensive experience in real estate law and property transactions. He has successfully handled numerous property registration matters and complex real estate disputes.
+                                Magoma is a Managing Partner at Adams & Magoma Advocates with extensive experience in real estate law and property transactions. Magoma has successfully handled numerous property registration matters and complex real estate disputes.
                             </p>
                             <div class="author-credentials">
                                 <span class="credential-badge">LLB (University of Nairobi)</span>

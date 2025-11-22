@@ -1,2 +1,22 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: http://127.0.0.1:8000/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /admin
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /practice-areas
+Allow: /practice-areas/*
+Allow: /blogs
+Allow: /blogs/*
+Allow: /contact
+Allow: /resources
+Allow: /book-appointment
+Allow: /case-evaluation

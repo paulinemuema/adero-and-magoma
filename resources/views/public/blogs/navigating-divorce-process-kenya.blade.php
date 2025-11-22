@@ -1,6 +1,68 @@
 @extends('layouts.public')
 
 @section('title', 'Navigating the Divorce Process in Kenya | Adams & Magoma Advocates')
+@section('description', 'Complete guide to divorce proceedings in Kenya. Learn about divorce laws, procedures, child custody, alimony, and property division. Expert family law advice from Adams & Magoma Advocates.')
+@section('keywords', 'divorce Kenya, divorce process Kenya, family law Kenya, child custody Kenya, divorce lawyer Nairobi')
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Navigating the Divorce Process in Kenya",
+      "description": "Complete guide to divorce proceedings in Kenya covering laws, procedures, child custody, and property division.",
+      "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "datePublished": "2025-12-10",
+      "dateModified": "2025-12-10",
+      "author": {
+        "@type": "Person",
+        "name": "Magoma",
+        "jobTitle": "Managing Partner & Family Law Specialist"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Adams & Magoma Advocates",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ asset('assets/images/logo_law.jpg') }}"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url()->current() }}"
+      },
+      "articleSection": "Family Law",
+      "keywords": "divorce Kenya, family law, child custody, property division"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ route('home') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "{{ route('blogs') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Navigating the Divorce Process in Kenya",
+          "item": "{{ url()->current() }}"
+        }
+      ]
+    }
+  ]
+}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />

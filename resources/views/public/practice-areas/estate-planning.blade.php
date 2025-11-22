@@ -53,7 +53,7 @@
                         <div style="color: var(--text-light); font-size: 0.9rem;">Plans Executed Successfully</div>
                     </div>
                     <div class="stat-item" style="text-align: center;">
-                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">25+</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">4+</div>
                         <div style="color: var(--text-light); font-size: 0.9rem;">Years Experience</div>
                     </div>
                 </div>
@@ -208,11 +208,11 @@
         <div class="attorneys-grid" style="max-width: 1000px; margin: 0 auto;">
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">MM</div>
+                    <div class="attorney-placeholder">M</div>
                 </div>
-                <h3 class="attorney-name">Margaret Magoma</h3>
+                <h3 class="attorney-name">Magoma</h3>
                 <div class="attorney-role">Partner & Estate Planning Specialist</div>
-                <p class="attorney-bio">Leading estate planning matters with 18+ years of experience in wills, trusts, and succession planning across Kenya.</p>
+                <p class="attorney-bio">Leading estate planning matters with expertise in wills, trusts, and succession planning across Kenya.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">STEP Qualified</span>
@@ -221,11 +221,11 @@
 
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">JA</div>
+                    <div class="attorney-placeholder">BA</div>
                 </div>
-                <h3 class="attorney-name">James Adams</h3>
+                <h3 class="attorney-name">Brian Adams Adero</h3>
                 <div class="attorney-role">Senior Partner & Tax Law Expert</div>
-                <p class="attorney-bio">Specialized in estate tax planning and business succession with extensive experience in complex estate structures.</p>
+                <p class="attorney-bio">Specialized in estate tax planning and business succession with strong experience in complex estate structures.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Tax Law Specialist</span>
@@ -372,10 +372,20 @@
     <section class="section cta-section">
         <div class="bg-pattern"></div>
         <h2 class="cta-title">Protect Your <span>Legacy Today</span></h2>
-        <p class="cta-description">Don't leave your family's future to chance. Contact us for comprehensive estate planning.</p>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="{{ route('contact') }}" class="btn btn-primary" style="margin-right: 1rem;">Schedule Consultation</a>
-            <a href="tel:+254700123456" class="btn btn-secondary">Call +254 700 123 456</a>
+        <p class="cta-description">Get started today with a free case assessment or book a consultation with our estate planning experts.</p>
+        <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ route('book-appointment') }}" class="btn btn-primary">
+                <span>Book Appointment</span>
+                <i class="fas fa-calendar-check"></i>
+            </a>
+            <a href="{{ route('case-evaluation') }}" class="btn btn-secondary">
+                <span>Get Free Assessment</span>
+                <i class="fas fa-clipboard-check"></i>
+            </a>
+            <a href="tel:+254700123456" class="btn btn-outline-light">
+                <span>Call Us</span>
+                <i class="fas fa-phone"></i>
+            </a>
         </div>
     </section>
 

@@ -1,6 +1,31 @@
 @extends('layouts.public')
 
 @section('title', 'Contact Us | Adams & Magoma Advocates')
+@section('description', 'Contact Adams & Magoma Advocates in Nairobi, Kenya. Get in touch for free consultations, book appointments, or send us a message. Phone: +254 700 123 456. Located at 123 Justice Avenue, Westlands.')
+@section('keywords', 'contact lawyer Nairobi, legal consultation Kenya, law firm contact, book appointment, free consultation Nairobi')
+
+@push('schema')
+<script type="application/ld+json">
+{!! json_encode([
+  '@context' => 'https://schema.org',
+  '@type' => 'BreadcrumbList',
+  'itemListElement' => [
+    [
+      '@type' => 'ListItem',
+      'position' => 1,
+      'name' => 'Home',
+      'item' => route('home')
+    ],
+    [
+      '@type' => 'ListItem',
+      'position' => 2,
+      'name' => 'Contact Us',
+      'item' => url()->current()
+    ]
+  ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />
@@ -86,6 +111,56 @@
                     <i class="fas fa-arrow-right"></i>
                 </a>
                 <p class="method-hours">123 Justice Avenue, Westlands</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Options Section -->
+    <section class="section" id="contact-options">
+        <div class="bg-pattern"></div>
+        <div class="contact-form-container">
+            <div class="contact-form-header">
+                <h2 class="section-title">How Can We <span>Help You?</span></h2>
+                <p class="section-subtitle">Choose the best way to get started. We're here to assist you with your legal needs.</p>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="contact-options-grid">
+                <a href="{{ route('case-evaluation') }}" class="contact-option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Get Free Case Assessment</h3>
+                    <p>Answer 5 quick questions and get a preliminary assessment with recommended next steps.</p>
+                    <span class="option-link">
+                        Start Assessment
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+                
+                <a href="{{ route('book-appointment') }}" class="contact-option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Book Appointment</h3>
+                    <p>Schedule a free 30-minute consultation with one of our expert attorneys.</p>
+                    <span class="option-link">
+                        Book Now
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+                
+                <a href="#contact-form" class="contact-option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Send Us a Message</h3>
+                    <p>Fill out our contact form and we'll get back to you within 24 hours.</p>
+                    <span class="option-link">
+                        Send Message
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
             </div>
         </div>
     </section>

@@ -1,6 +1,31 @@
 @extends('layouts.public')
 
 @section('title', 'Practice Areas | Adams & Magoma Advocates')
+@section('description', 'Comprehensive legal services in Nairobi, Kenya. Our practice areas include Corporate Law, Real Estate Law, Family Law, Estate Planning, Litigation, and Employment Law. Expert attorneys ready to help.')
+@section('keywords', 'practice areas, legal services Kenya, corporate law, real estate law, family law, estate planning, litigation, employment law Nairobi')
+
+@push('schema')
+<script type="application/ld+json">
+{!! json_encode([
+  '@context' => 'https://schema.org',
+  '@type' => 'BreadcrumbList',
+  'itemListElement' => [
+    [
+      '@type' => 'ListItem',
+      'position' => 1,
+      'name' => 'Home',
+      'item' => route('home')
+    ],
+    [
+      '@type' => 'ListItem',
+      'position' => 2,
+      'name' => 'Practice Areas',
+      'item' => url()->current()
+    ]
+  ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />
@@ -24,16 +49,16 @@
 
         <div class="about-container">
             <div class="about-content">
-                <p>With over 25 years of combined experience, our attorneys specialize in various areas of law, offering strategic counsel and effective representation. Each practice area is led by experienced professionals who understand the unique challenges and opportunities within their field.</p>
+                <p>Since our founding in 2021, our attorneys have specialized in various areas of law, offering strategic counsel and effective representation. Each practice area is led by experienced professionals who understand the unique challenges and opportunities within their field.</p>
                 <p>We approach every case with diligence, creativity, and a commitment to achieving the best possible outcomes for our clients. Whether you're an individual, business, or institution, we have the expertise to address your legal needs.</p>
 
                 <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
                     <div class="stat-item" style="text-align: center;">
-                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">500+</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">150+</div>
                         <div style="color: var(--text-light); font-size: 0.9rem;">Cases Resolved</div>
                     </div>
                     <div class="stat-item" style="text-align: center;">
-                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">25+</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">4+</div>
                         <div style="color: var(--text-light); font-size: 0.9rem;">Years Experience</div>
                     </div>
                     <div class="stat-item" style="text-align: center;">
@@ -162,7 +187,7 @@
                     <i class="fas fa-award"></i>
                 </div>
                 <h3 class="service-title">Proven Track Record</h3>
-                <p class="service-description">Over 25 years of successful case resolution across all practice areas, with a 98% client satisfaction rate.</p>
+                <p class="service-description">Successful case resolution across all practice areas since 2021, with a 98% client satisfaction rate.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">

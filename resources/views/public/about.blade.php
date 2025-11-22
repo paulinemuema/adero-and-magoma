@@ -1,6 +1,31 @@
 @extends('layouts.public')
 
 @section('title', 'About Us | Adams & Magoma Advocates')
+@section('description', 'Learn about Adams & Magoma Advocates - Premier law firm in Nairobi, Kenya since 2021. Our experienced attorneys provide exceptional legal services with integrity and dedication. 150+ cases resolved, 98% client satisfaction.')
+@section('keywords', 'about Adams Magoma Advocates, law firm Nairobi, legal services Kenya, experienced lawyers, law firm history')
+
+@push('schema')
+<script type="application/ld+json">
+{!! json_encode([
+  '@context' => 'https://schema.org',
+  '@type' => 'BreadcrumbList',
+  'itemListElement' => [
+    [
+      '@type' => 'ListItem',
+      'position' => 1,
+      'name' => 'Home',
+      'item' => route('home')
+    ],
+    [
+      '@type' => 'ListItem',
+      'position' => 2,
+      'name' => 'About Us',
+      'item' => url()->current()
+    ]
+  ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />
@@ -11,7 +36,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-pre-title">
-                <span class="hero-badge">Established 1998</span>
+                <span class="hero-badge">Established 2021</span>
                 <span class="hero-trust-indicators">
                     <i class="fas fa-award"></i> Award-Winning Firm
                     <span class="divider">|</span>
@@ -19,7 +44,7 @@
                 </span>
             </div>
             <h1 class="hero-title">About <span>Adams</span> & <span>Magoma</span></h1>
-            <p class="hero-subtitle">A premier full-service law firm delivering strategic counsel, courtroom excellence, and client-first results for over 25 years.</p>
+            <p class="hero-subtitle">A premier full-service law firm delivering strategic counsel, courtroom excellence, and client-first results since 2021.</p>
             <div class="hero-cta">
                 <a href="{{ route('contact') }}" class="btn btn-primary">
                     <span>Schedule Consultation</span>
@@ -42,7 +67,7 @@
                     <i class="fas fa-gavel"></i>
                 </div>
                 <div class="stat-showcase-content">
-                    <span class="stat-showcase-number" data-target="500">0</span>
+                    <span class="stat-showcase-number" data-target="150">0</span>
                     <span class="stat-showcase-suffix">+</span>
                     <span class="stat-showcase-label">Cases Successfully Resolved</span>
                 </div>
@@ -52,7 +77,7 @@
                     <i class="fas fa-calendar-alt"></i>
                 </div>
                 <div class="stat-showcase-content">
-                    <span class="stat-showcase-number" data-target="25">0</span>
+                    <span class="stat-showcase-number" data-target="4">0</span>
                     <span class="stat-showcase-suffix">+</span>
                     <span class="stat-showcase-label">Years of Excellence</span>
                 </div>
@@ -72,9 +97,9 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="stat-showcase-content">
-                    <span class="stat-showcase-number" data-target="50">0</span>
+                    <span class="stat-showcase-number" data-target="150">0</span>
                     <span class="stat-showcase-suffix">+</span>
-                    <span class="stat-showcase-label">Expert Attorneys</span>
+                    <span class="stat-showcase-label">Cases Resolved</span>
                 </div>
             </div>
         </div>
@@ -90,7 +115,7 @@
         <div class="about-container">
             <div class="about-content">
                 <h2>Client-Centered, <span>Results-Driven</span></h2>
-                <p>Adams & Magoma Advocates is a trusted legal partner to corporations, institutions, and individuals across the region. Our attorneys bring decades of combined experience across corporate transactions, litigation, real estate, family law, employment, and estate planning.</p>
+                <p>Adams & Magoma Advocates is a trusted legal partner to corporations, institutions, and individuals across the region. Our attorneys bring extensive experience across corporate transactions, litigation, real estate, family law, employment, and estate planning.</p>
                 <p>We align legal strategy to business goals, prioritize clarity and communication, and execute with precision. Our culture is built on integrity, excellence, and relentless advocacy.</p>
                 
                 <div class="about-features">
@@ -290,43 +315,34 @@
     <section class="section history-section">
         <div class="bg-pattern"></div>
         <h2 class="section-title">Our <span>History</span></h2>
-        <p class="section-subtitle">A legacy of legal leadership and client service spanning over two decades.</p>
+                <p class="section-subtitle">A growing legacy of legal leadership and client service since our founding.</p>
         <div class="section-divider"></div>
 
         <div class="history-timeline">
             <div class="timeline-item fade-in">
-                <div class="timeline-marker">1998</div>
+                <div class="timeline-marker">2021</div>
                 <div class="timeline-content">
                     <h3>Firm Founded</h3>
-                    <p>Adams & Magoma Advocates opens its doors with a bold vision: to deliver world-class legal services with a uniquely personal touch. Founded by James Adams and Sarah Magoma, the firm begins with three attorneys and one office in Nairobi.</p>
-                    <div class="timeline-meta">3 Attorneys • 1 Office • Vision Established</div>
+                    <p>Adams & Magoma Advocates opens its doors with a bold vision: to deliver world-class legal services with a uniquely personal touch. Founded by Brian Adams Adero and Magoma, the firm begins with a commitment to excellence and client-centered service.</p>
+                    <div class="timeline-meta">Vision Established • Client-Focused Approach • Excellence Commitment</div>
                 </div>
             </div>
 
             <div class="timeline-item fade-in">
-                <div class="timeline-marker">2008</div>
+                <div class="timeline-marker">2023</div>
                 <div class="timeline-content">
-                    <h3>Regional Growth</h3>
-                    <p>The firm expands practice groups and builds a reputation for complex corporate deals and high-stakes litigation. We grow to 12 attorneys and successfully resolve over 150 major cases.</p>
-                    <div class="timeline-meta">12 Attorneys • 150+ Cases • Regional Recognition</div>
-                </div>
-            </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-marker">2018</div>
-                <div class="timeline-content">
-                    <h3>Industry Recognition</h3>
-                    <p>Recognized among top firms for client service, innovation, and excellence across multiple practice areas. We receive the "Best Corporate Law Firm Award" and expand to 50+ staff members.</p>
-                    <div class="timeline-meta">50+ Staff • Best Corporate Law Firm Award • Industry Leader</div>
+                    <h3>Growing Reputation</h3>
+                    <p>The firm builds a strong reputation for effective legal representation across multiple practice areas. We successfully resolve numerous cases and establish ourselves as a trusted legal partner in the region.</p>
+                    <div class="timeline-meta">Strong Track Record • Trusted Partner • Growing Recognition</div>
                 </div>
             </div>
 
             <div class="timeline-item fade-in">
                 <div class="timeline-marker">2025</div>
                 <div class="timeline-content">
-                    <h3>Trusted Partner</h3>
-                    <p>We continue to grow, serving leading organizations and families with the same dedication that defined our beginnings. Today, we've resolved over 500 matters with a 98% client satisfaction rate.</p>
-                    <div class="timeline-meta">500+ Matters Resolved • 98% Client Satisfaction • Trusted Leader</div>
+                    <h3>Established Excellence</h3>
+                    <p>We continue to grow, serving organizations and families with dedication and professionalism. Today, we've resolved over 150 matters with a 98% client satisfaction rate, building on our foundation of excellence.</p>
+                    <div class="timeline-meta">150+ Matters Resolved • 98% Client Satisfaction • Established Excellence</div>
                 </div>
             </div>
         </div>
@@ -342,16 +358,16 @@
         <div class="attorneys-grid">
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <img src="{{ asset('assets/images/attorneys/james-adams.jpg') }}" alt="James Adams" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="attorney-placeholder" style="display: none;">JA</div>
+                    <img src="{{ asset('assets/images/attorneys/brian-adams-adero.jpg') }}" alt="Brian Adams Adero" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="attorney-placeholder" style="display: none;">BA</div>
                 </div>
-                <h3 class="attorney-name">James Adams</h3>
+                <h3 class="attorney-name">Brian Adams Adero</h3>
                 <div class="attorney-role">Senior Partner</div>
-                <p class="attorney-bio">Advisor to boards and executives on complex transactions, governance, and risk mitigation. Over 25 years of experience in corporate law with a track record of successful multi-million dollar deals.</p>
+                <p class="attorney-bio">Advisor to businesses and individuals on corporate law, litigation, and legal strategy. Specializes in corporate transactions, dispute resolution, and providing strategic legal counsel to help clients achieve their objectives.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Advocate of the High Court</span>
-                    <span class="credential">25+ Years Experience</span>
+                    <span class="credential">Corporate Law Specialist</span>
                 </div>
                 <div class="attorney-social">
                     <a href="#" class="attorney-social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -360,34 +376,16 @@
             </div>
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <img src="{{ asset('assets/images/attorneys/sarah-magoma.jpg') }}" alt="Sarah Magoma" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="attorney-placeholder" style="display: none;">SM</div>
+                    <img src="{{ asset('assets/images/attorneys/magoma.jpg') }}" alt="Magoma" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="attorney-placeholder" style="display: none;">M</div>
                 </div>
-                <h3 class="attorney-name">Sarah Magoma</h3>
+                <h3 class="attorney-name">Magoma</h3>
                 <div class="attorney-role">Managing Partner</div>
-                <p class="attorney-bio">Seasoned litigator with a track record of favorable outcomes in high-stakes disputes. Specializes in commercial litigation and arbitration, having won over 200 cases throughout her career.</p>
-                <div class="attorney-credentials">
-                    <span class="credential">LLB (Kenyatta University)</span>
-                    <span class="credential">Certified Mediator</span>
-                    <span class="credential">200+ Cases Won</span>
-                </div>
-                <div class="attorney-social">
-                    <a href="#" class="attorney-social-link"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="attorney-social-link"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="attorney-card fade-in">
-                <div class="attorney-image">
-                    <img src="{{ asset('assets/images/attorneys/robert-kariuki.jpg') }}" alt="Robert Kariuki" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="attorney-placeholder" style="display: none;">RK</div>
-                </div>
-                <h3 class="attorney-name">Robert Kariuki</h3>
-                <div class="attorney-role">Partner</div>
-                <p class="attorney-bio">Leads the real estate and development practice with deep market insight. Extensive experience in property transactions and development law, having facilitated deals worth over $500 million.</p>
+                <p class="attorney-bio">Experienced attorney with expertise in real estate law, family law, and employment matters. Specializes in property transactions, family legal matters, and workplace disputes, providing practical solutions and dedicated representation.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
-                    <span class="credential">Notary Public</span>
-                    <span class="credential">$500M+ in Deals</span>
+                    <span class="credential">Advocate of the High Court</span>
+                    <span class="credential">Multi-Practice Specialist</span>
                 </div>
                 <div class="attorney-social">
                     <a href="#" class="attorney-social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -644,15 +642,19 @@
     <!-- Floating Action Buttons -->
     <div class="floating-actions">
         <a href="tel:+254700123456" class="fab-btn fab-phone" title="Call Us">
+            <span class="ripple-effect"></span>
             <i class="fas fa-phone"></i>
         </a>
         <button class="fab-btn fab-whatsapp" id="whatsappPopupBtn" title="WhatsApp Us">
+            <span class="ripple-effect"></span>
             <i class="fab fa-whatsapp"></i>
         </button>
         <a href="#contact" class="fab-btn fab-email" title="Contact Us">
+            <span class="ripple-effect"></span>
             <i class="fas fa-envelope"></i>
         </a>
         <button class="fab-btn fab-scroll-top" id="scrollToTop" title="Back to Top">
+            <span class="ripple-effect"></span>
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>

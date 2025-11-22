@@ -888,3 +888,238 @@ if (articleNewsletterForm) {
     });
 }
 
+// Exit-Intent Popup
+(function() {
+    let exitIntentShown = false;
+    const exitIntentCookie = 'exit_intent_shown';
+    
+    // Check if popup was already shown (using sessionStorage)
+    if (sessionStorage.getItem(exitIntentCookie)) {
+        return;
+    }
+    
+    // Get page-specific offer
+    function getPageOffer() {
+        const path = window.location.pathname;
+        const pageTitle = document.title.toLowerCase();
+        
+        if (path.includes('/practice-areas/')) {
+            const practiceArea = path.split('/').pop().replace(/-/g, ' ');
+            return {
+                title: `Get Free Assessment for ${practiceArea.charAt(0).toUpperCase() + practiceArea.slice(1)}`,
+                description: 'Answer 5 quick questions and get matched with the right attorney.',
+                ctaText: 'Start Assessment',
+                ctaLink: '/case-evaluation?area=' + practiceArea
+            };
+        } else if (path.includes('/blogs/')) {
+            const blogTitle = document.querySelector('h1')?.textContent || 'Legal Guide';
+            return {
+                title: `Download: Complete Guide to ${blogTitle}`,
+                description: 'Get our comprehensive legal guide delivered to your inbox.',
+                ctaText: 'Download Guide',
+                ctaLink: '/resources'
+            };
+        } else if (path.includes('/contact')) {
+            return {
+                title: 'Limited Slots Available - Book Now',
+                description: 'Schedule your free consultation today. Only 3 slots remaining this week.',
+                ctaText: 'Book Appointment',
+                ctaLink: '/book-appointment'
+            };
+        } else if (path.includes('/about')) {
+            return {
+                title: 'Ready to Get Started?',
+                description: 'Book your free 30-minute consultation with our expert attorneys.',
+                ctaText: 'Book Consultation',
+                ctaLink: '/book-appointment'
+            };
+        } else {
+            return {
+                title: 'Free 30-Minute Consultation',
+                description: 'Book your free consultation with our expert legal team today.',
+                ctaText: 'Book Now',
+                ctaLink: '/book-appointment'
+            };
+        }
+    }
+    
+    // Detect exit intent
+    document.addEventListener('mouseout', function(e) {
+        if (!e.toElement && !e.relatedTarget && e.clientY < 10) {
+            if (!exitIntentShown) {
+                showExitIntent();
+            }
+        }
+    });
+    
+    // Also detect when user tries to close tab/window
+    window.addEventListener('beforeunload', function() {
+        if (!exitIntentShown) {
+            showExitIntent();
+        }
+    });
+    
+    function showExitIntent() {
+        exitIntentShown = true;
+        sessionStorage.setItem(exitIntentCookie, 'true');
+        
+        const offer = getPageOffer();
+        const popup = document.getElementById('exitIntentPopup');
+        const overlay = document.getElementById('exitIntentOverlay');
+        
+        if (popup && overlay) {
+            // Update popup content
+            const titleEl = popup.querySelector('.exit-intent-title');
+            const descEl = popup.querySelector('.exit-intent-description');
+            const ctaEl = popup.querySelector('.exit-intent-cta');
+            
+            if (titleEl) titleEl.textContent = offer.title;
+            if (descEl) descEl.textContent = offer.description;
+            if (ctaEl) {
+                ctaEl.textContent = offer.ctaText;
+                ctaEl.href = offer.ctaLink;
+            }
+            
+            // Show popup
+            overlay.classList.add('show');
+            popup.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    // Close popup handlers
+    const exitIntentClose = document.getElementById('exitIntentClose');
+    const exitIntentOverlay = document.getElementById('exitIntentOverlay');
+    const exitIntentDismiss = document.getElementById('exitIntentDismiss');
+    
+    if (exitIntentClose) {
+        exitIntentClose.addEventListener('click', closeExitIntent);
+    }
+    
+    if (exitIntentOverlay) {
+        exitIntentOverlay.addEventListener('click', closeExitIntent);
+    }
+    
+    if (exitIntentDismiss) {
+        exitIntentDismiss.addEventListener('click', closeExitIntent);
+    }
+    
+    function closeExitIntent() {
+        const popup = document.getElementById('exitIntentPopup');
+        const overlay = document.getElementById('exitIntentOverlay');
+        
+        if (popup && overlay) {
+            overlay.classList.remove('show');
+            popup.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    }
+})();
+
+// Lazy Loading for Images
+(function() {
+    // Check if native lazy loading is supported
+    if ('loading' in HTMLImageElement.prototype) {
+        // Native lazy loading is supported - add loading="lazy" to images below fold
+        const images = document.querySelectorAll('img:not([loading])');
+        images.forEach((img, index) => {
+            // Skip first 3 images (likely above fold)
+            if (index > 2 && !img.closest('.hero') && !img.closest('.loading-screen')) {
+                img.loading = 'lazy';
+            }
+        });
+    } else {
+        // Fallback: Use Intersection Observer for older browsers
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        img.classList.add('loaded');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+})();
+
+// Theme Toggle Functionality
+(function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggleMobile = document.getElementById('themeToggleMobile');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeIconMobile = document.getElementById('themeIconMobile');
+    const html = document.documentElement;
+    
+    // Get saved theme or default to dark
+    const getTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        return savedTheme || 'dark';
+    };
+    
+    // Set theme
+    const setTheme = (theme) => {
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        updateIcons(theme);
+    };
+    
+    // Update icons based on theme
+    const updateIcons = (theme) => {
+        if (theme === 'light') {
+            if (themeIcon) {
+                themeIcon.className = 'fas fa-sun';
+            }
+            if (themeIconMobile) {
+                themeIconMobile.className = 'fas fa-sun me-2';
+                const mobileText = themeToggleMobile?.querySelector('span');
+                if (mobileText) mobileText.textContent = 'Light Mode';
+            }
+        } else {
+            if (themeIcon) {
+                themeIcon.className = 'fas fa-moon';
+            }
+            if (themeIconMobile) {
+                themeIconMobile.className = 'fas fa-moon me-2';
+                const mobileText = themeToggleMobile?.querySelector('span');
+                if (mobileText) mobileText.textContent = 'Dark Mode';
+            }
+        }
+    };
+    
+    // Toggle theme
+    const toggleTheme = () => {
+        const currentTheme = html.getAttribute('data-theme') || getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+    };
+    
+    // Initialize theme on page load
+    const initTheme = () => {
+        const theme = getTheme();
+        setTheme(theme);
+    };
+    
+    // Event listeners
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    }
+    
+    // Initialize on page load
+    initTheme();
+})();
+

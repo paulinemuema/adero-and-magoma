@@ -1,6 +1,68 @@
 @extends('layouts.public')
 
 @section('title', 'Estate Planning Essentials in Kenya | Adams & Magoma Advocates')
+@section('description', 'Essential guide to estate planning in Kenya. Learn about wills, trusts, probate, and succession planning. Protect your legacy with expert advice from Adams & Magoma Advocates.')
+@section('keywords', 'estate planning Kenya, wills Kenya, trusts Kenya, probate Kenya, succession planning, estate lawyer Nairobi')
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Estate Planning Essentials in Kenya",
+      "description": "Essential guide to estate planning in Kenya covering wills, trusts, probate, and succession planning strategies.",
+      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "datePublished": "2025-12-05",
+      "dateModified": "2025-12-05",
+      "author": {
+        "@type": "Person",
+        "name": "Magoma",
+        "jobTitle": "Senior Partner & Estate Planning Specialist"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Adams & Magoma Advocates",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ asset('assets/images/logo_law.jpg') }}"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url()->current() }}"
+      },
+      "articleSection": "Estate Planning",
+      "keywords": "estate planning, wills, trusts, probate, succession"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ route('home') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "{{ route('blogs') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Estate Planning Essentials in Kenya",
+          "item": "{{ url()->current() }}"
+        }
+      ]
+    }
+  ]
+}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />

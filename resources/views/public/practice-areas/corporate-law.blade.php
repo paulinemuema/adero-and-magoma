@@ -41,7 +41,7 @@
 
                 <p>Our corporate law practice encompasses the full spectrum of business legal needs, from entity formation and governance to complex mergers, acquisitions, and regulatory compliance. We work closely with entrepreneurs, startups, established corporations, and investors to structure deals, mitigate risks, and achieve business objectives.</p>
 
-                <p>With over 25 years of experience in corporate transactions and governance, our attorneys bring practical business acumen combined with legal expertise to deliver solutions that drive value for our clients.</p>
+                <p>Our attorneys bring practical business acumen combined with legal expertise to deliver solutions that drive value for our clients in corporate transactions and governance matters.</p>
 
                 <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
                     <div class="stat-item" style="text-align: center;">
@@ -208,11 +208,11 @@
         <div class="attorneys-grid" style="max-width: 1000px; margin: 0 auto;">
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">JA</div>
+                    <div class="attorney-placeholder">BA</div>
                 </div>
-                <h3 class="attorney-name">James Adams</h3>
+                <h3 class="attorney-name">Brian Adams Adero</h3>
                 <div class="attorney-role">Senior Partner & Head of Corporate Law</div>
-                <p class="attorney-bio">Leading corporate transactions and M&A with 20+ years of experience in complex business deals and regulatory compliance.</p>
+                <p class="attorney-bio">Leading corporate transactions and M&A with expertise in complex business deals and regulatory compliance.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Admitted to the Kenyan Bar</span>
@@ -221,11 +221,11 @@
 
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">MM</div>
+                    <div class="attorney-placeholder">M</div>
                 </div>
-                <h3 class="attorney-name">Margaret Magoma</h3>
+                <h3 class="attorney-name">Magoma</h3>
                 <div class="attorney-role">Partner & Corporate Governance Specialist</div>
-                <p class="attorney-bio">Expert in corporate governance, compliance, and business formation with extensive experience in regulatory frameworks.</p>
+                <p class="attorney-bio">Expert in corporate governance, compliance, and business formation with strong knowledge of regulatory frameworks.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Certified Public Secretary</span>
@@ -372,10 +372,20 @@
     <section class="section cta-section">
         <div class="bg-pattern"></div>
         <h2 class="cta-title">Need Corporate Law <span>Assistance?</span></h2>
-        <p class="cta-description">Contact us today for a confidential consultation about your corporate legal needs.</p>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="{{ route('contact') }}" class="btn btn-primary" style="margin-right: 1rem;">Schedule Consultation</a>
-            <a href="tel:+254700123456" class="btn btn-secondary">Call +254 700 123 456</a>
+        <p class="cta-description">Get started today with a free case assessment or book a consultation with our corporate law experts.</p>
+        <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ route('book-appointment') }}" class="btn btn-primary">
+                <span>Book Appointment</span>
+                <i class="fas fa-calendar-check"></i>
+            </a>
+            <a href="{{ route('case-evaluation') }}" class="btn btn-secondary">
+                <span>Get Free Assessment</span>
+                <i class="fas fa-clipboard-check"></i>
+            </a>
+            <a href="tel:+254700123456" class="btn btn-outline-light">
+                <span>Call Us</span>
+                <i class="fas fa-phone"></i>
+            </a>
         </div>
     </section>
 

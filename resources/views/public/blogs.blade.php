@@ -1,6 +1,31 @@
 @extends('layouts.public')
 
 @section('title', 'Legal Blog | Adams & Magoma Advocates')
+@section('description', 'Expert legal insights and updates from Adams & Magoma Advocates. Read articles on contract law, family law, estate planning, employment rights, and property registration in Kenya.')
+@section('keywords', 'legal blog Kenya, law articles, legal insights, Kenyan law updates, legal advice blog')
+
+@push('schema')
+<script type="application/ld+json">
+{!! json_encode([
+  '@context' => 'https://schema.org',
+  '@type' => 'BreadcrumbList',
+  'itemListElement' => [
+    [
+      '@type' => 'ListItem',
+      'position' => 1,
+      'name' => 'Home',
+      'item' => route('home')
+    ],
+    [
+      '@type' => 'ListItem',
+      'position' => 2,
+      'name' => 'Blogs',
+      'item' => url()->current()
+    ]
+  ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />

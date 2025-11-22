@@ -1,11 +1,155 @@
 @extends('layouts.public')
 
 @section('title', 'Adams & Magoma | Premier Legal Advocates')
+@section('description', 'Adams & Magoma Advocates - Premier legal services in Nairobi, Kenya. Expert attorneys specializing in Corporate Law, Real Estate, Family Law, Estate Planning, Litigation, and Employment Law. Established 2021. Free consultations available.')
+@section('keywords', 'lawyer Nairobi, legal services Kenya, corporate law Kenya, real estate lawyer Nairobi, family law attorney Kenya, estate planning Kenya, litigation lawyer Nairobi, employment law Kenya, best law firm Nairobi')
+
+@push('schema')
+<script type="application/ld+json">
+{!! json_encode([
+  '@context' => 'https://schema.org',
+  '@graph' => [
+    [
+      '@type' => 'LegalService',
+      '@id' => url('/') . '#legalservice',
+      'name' => 'Adams & Magoma Advocates',
+      'image' => asset('assets/images/logo_law.jpg'),
+      'description' => 'Premier legal advocates providing comprehensive legal services in Nairobi, Kenya since 2021',
+      'url' => url('/'),
+      'telephone' => '+254700123456',
+      'email' => 'info@adamsmagoma.com',
+      'priceRange' => '$$',
+      'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => '123 Justice Avenue, Westlands',
+        'addressLocality' => 'Nairobi',
+        'addressRegion' => 'Nairobi County',
+        'postalCode' => '00100',
+        'addressCountry' => 'KE'
+      ],
+      'geo' => [
+        '@type' => 'GeoCoordinates',
+        'latitude' => -1.2644,
+        'longitude' => 36.8219
+      ],
+      'areaServed' => [
+        '@type' => 'Country',
+        'name' => 'Kenya'
+      ],
+      'serviceType' => [
+        'Corporate Law',
+        'Real Estate Law',
+        'Family Law',
+        'Estate Planning',
+        'Litigation',
+        'Employment Law'
+      ],
+      'openingHoursSpecification' => [
+        [
+          '@type' => 'OpeningHoursSpecification',
+          'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          'opens' => '08:00',
+          'closes' => '18:00'
+        ],
+        [
+          '@type' => 'OpeningHoursSpecification',
+          'dayOfWeek' => 'Saturday',
+          'opens' => '09:00',
+          'closes' => '13:00'
+        ]
+      ],
+      'aggregateRating' => [
+        '@type' => 'AggregateRating',
+        'ratingValue' => '4.9',
+        'reviewCount' => '127'
+      ]
+    ],
+    [
+      '@type' => 'Organization',
+      '@id' => url('/') . '#organization',
+      'name' => 'Adams & Magoma Advocates',
+      'url' => url('/'),
+      'logo' => [
+        '@type' => 'ImageObject',
+        'url' => asset('assets/images/logo_law.jpg')
+      ],
+      'image' => asset('assets/images/logo_law.jpg'),
+      'description' => 'Premier legal advocates providing comprehensive legal services in Nairobi, Kenya',
+      'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => '123 Justice Avenue, Westlands',
+        'addressLocality' => 'Nairobi',
+        'addressRegion' => 'Nairobi County',
+        'postalCode' => '00100',
+        'addressCountry' => 'KE'
+      ],
+      'contactPoint' => [
+        '@type' => 'ContactPoint',
+        'telephone' => '+254700123456',
+        'contactType' => 'Customer Service',
+        'areaServed' => 'KE',
+        'availableLanguage' => ['English', 'Swahili']
+      ],
+      'sameAs' => [
+        'https://www.facebook.com/adamsmagoma',
+        'https://www.linkedin.com/company/adams-magoma-advocates',
+        'https://twitter.com/adamsmagoma'
+      ],
+      'foundingDate' => '2021',
+      'numberOfEmployees' => [
+        '@type' => 'QuantitativeValue',
+        'value' => '50+'
+      ]
+    ],
+    [
+      '@type' => 'LocalBusiness',
+      '@id' => url('/') . '#localbusiness',
+      'name' => 'Adams & Magoma Advocates',
+      'image' => asset('assets/images/logo_law.jpg'),
+      'description' => 'Premier legal services in Nairobi, Kenya',
+      'url' => url('/'),
+      'telephone' => '+254700123456',
+      'priceRange' => '$$',
+      'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => '123 Justice Avenue, Westlands',
+        'addressLocality' => 'Nairobi',
+        'addressRegion' => 'Nairobi County',
+        'postalCode' => '00100',
+        'addressCountry' => 'KE'
+      ],
+      'geo' => [
+        '@type' => 'GeoCoordinates',
+        'latitude' => -1.2644,
+        'longitude' => 36.8219
+      ],
+      'openingHoursSpecification' => [
+        [
+          '@type' => 'OpeningHoursSpecification',
+          'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          'opens' => '08:00',
+          'closes' => '18:00'
+        ],
+        [
+          '@type' => 'OpeningHoursSpecification',
+          'dayOfWeek' => 'Saturday',
+          'opens' => '09:00',
+          'closes' => '13:00'
+        ]
+      ]
+    ]
+  ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @section('content')
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <div class="loading-logo">ADAMS & MAGOMA</div>
+        <div class="loading-logo">
+            <img src="{{ asset('assets/images/logo_law.jpg') }}" alt="Adams & Magoma Advocates Logo" class="loading-logo-image">
+            <span>ADAMS &amp; MAGOMA</span>
+        </div>
         <div class="loading-bar">
             <div class="loading-progress" id="loadingProgress"></div>
         </div>
@@ -20,7 +164,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-pre-title">
-                <span class="hero-badge">Established 1998</span>
+                <span class="hero-badge">Established 2021</span>
                 <span class="hero-trust-indicators">
                     <i class="fas fa-award"></i> Award-Winning Firm
                     <span class="divider">|</span>
@@ -28,28 +172,28 @@
                 </span>
             </div>
             <h1 class="hero-title">Where <span>Justice</span> Meets <span>Excellence</span></h1>
-            <p class="hero-subtitle">For over two decades, Adams & Magoma Advocates has stood as a beacon of legal excellence, combining unparalleled expertise with unwavering dedication to our clients' success.</p>
+            <p class="hero-subtitle">Since 2021, Adams & Magoma Advocates has been dedicated to providing exceptional legal services, combining expertise with unwavering commitment to our clients' success.</p>
             <div class="hero-cta">
-                <a href="{{ route('practice-areas') }}" class="btn btn-primary">
+                <a href="{{ route('book-appointment') }}" class="btn btn-primary">
+                    <span>Book Appointment</span>
+                    <i class="fas fa-calendar-check"></i>
+                </a>
+                <a href="{{ route('practice-areas') }}" class="btn btn-secondary">
                     <span>Explore Our Services</span>
                     <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="{{ route('contact') }}" class="btn btn-secondary">
-                    <span>Free Consultation</span>
-                    <i class="fas fa-calendar-check"></i>
                 </a>
             </div>
             <div class="hero-stats">
                 <div class="hero-stat-item">
-                    <span class="hero-stat-number">500+</span>
-                    <span class="hero-stat-label">Cases Won</span>
+                    <span class="hero-stat-number">150+</span>
+                    <span class="hero-stat-label">Cases Resolved</span>
                 </div>
                 <div class="hero-stat-item">
                     <span class="hero-stat-number">98%</span>
                     <span class="hero-stat-label">Success Rate</span>
                 </div>
                 <div class="hero-stat-item">
-                    <span class="hero-stat-number">25+</span>
+                    <span class="hero-stat-number">4+</span>
                     <span class="hero-stat-label">Years Experience</span>
                 </div>
             </div>
@@ -80,7 +224,7 @@
                 </div>
                 <div class="trust-badge-item">
                     <i class="fas fa-handshake"></i>
-                    <span>Trusted by 500+ Clients</span>
+                    <span>Trusted by 150+ Clients</span>
                 </div>
             </div>
         </div>
@@ -90,20 +234,20 @@
     <section class="section about-section" id="about">
         <div class="bg-pattern"></div>
         <h2 class="section-title">Our <span>Legacy</span> of Excellence</h2>
-        <p class="section-subtitle">With over 25 years of dedicated service, we have built a reputation for excellence, integrity, and success in the legal field.</p>
+        <p class="section-subtitle">Since our founding in 2021, we have built a reputation for excellence, integrity, and success in the legal field.</p>
         <div class="section-divider"></div>
         <div class="about-container">
             <div class="about-content">
                 <h2>A Tradition of <span>Legal Excellence</span></h2>
-                <p>Founded in 1998, Adams & Magoma Advocates has established itself as one of the most respected law firms in the region. Our founding partners envisioned a practice that would not only provide exceptional legal counsel but would also serve as a pillar of integrity in the legal community.</p>
-                <p>Over the past 25 years, we have built a legacy of success by approaching each case with meticulous attention to detail, strategic foresight, and an unwavering commitment to our clients' objectives.</p>
+                <p>Founded in 2021, Adams & Magoma Advocates has quickly established itself as a trusted law firm in the region. Our founding partners envisioned a practice that would not only provide exceptional legal counsel but would also serve as a pillar of integrity in the legal community.</p>
+                <p>Over the past 4 years, we have built a strong foundation of success by approaching each case with meticulous attention to detail, strategic foresight, and an unwavering commitment to our clients' objectives.</p>
                 
                 <div class="about-stats">
                     <div class="stat-item fade-in">
                         <div class="stat-icon">
                             <i class="fas fa-gavel"></i>
                         </div>
-                        <span class="stat-number" data-target="500">0</span>
+                        <span class="stat-number" data-target="150">0</span>
                         <span class="stat-suffix">+</span>
                         <span class="stat-label">Cases Resolved</span>
                     </div>
@@ -111,7 +255,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
-                        <span class="stat-number" data-target="25">0</span>
+                        <span class="stat-number" data-target="4">0</span>
                         <span class="stat-suffix">+</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
@@ -127,9 +271,9 @@
                         <div class="stat-icon">
                             <i class="fas fa-trophy"></i>
                         </div>
-                        <span class="stat-number" data-target="50">0</span>
+                        <span class="stat-number" data-target="150">0</span>
                         <span class="stat-suffix">+</span>
-                        <span class="stat-label">Industry Awards</span>
+                        <span class="stat-label">Cases Resolved</span>
                     </div>
                 </div>
             </div>
@@ -200,6 +344,63 @@
         </div>
     </section>
 
+    <!-- Case Assessment Section -->
+    <section class="section case-assessment-section" id="case-assessment">
+        <div class="bg-pattern"></div>
+        <div class="case-assessment-container">
+            <div class="case-assessment-content">
+                <div class="assessment-badge">Free Assessment</div>
+                <h2 class="section-title">Not Sure What You <span>Need?</span></h2>
+                <p class="section-subtitle">Get your free case evaluation in just 5 minutes. Answer a few quick questions and receive a preliminary assessment with recommended next steps.</p>
+                <div class="assessment-features">
+                    <div class="assessment-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>5-Minute Questionnaire</span>
+                    </div>
+                    <div class="assessment-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Instant Preliminary Assessment</span>
+                    </div>
+                    <div class="assessment-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Attorney Matching</span>
+                    </div>
+                    <div class="assessment-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>100% Free & Confidential</span>
+                    </div>
+                </div>
+                <div class="assessment-cta">
+                    <a href="{{ route('case-evaluation') }}" class="btn btn-primary btn-lg">
+                        <span>Start Free Assessment</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="{{ route('book-appointment') }}" class="btn btn-secondary btn-lg">
+                        <span>Or Book Appointment Directly</span>
+                        <i class="fas fa-calendar-check"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="case-assessment-visual">
+                <div class="assessment-image-wrapper">
+                    <div class="assessment-icon-large">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="assessment-stats">
+                        <div class="assessment-stat">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Assessments Completed</span>
+                        </div>
+                        <div class="assessment-stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Attorneys Section -->
     <section class="section attorneys-section" id="attorneys">
         <div class="bg-pattern"></div>
@@ -208,22 +409,16 @@
         <div class="section-divider"></div>
         <div class="attorneys-grid">
             <div class="attorney-card fade-in">
-                <div class="attorney-image">JA</div>
-                <h3 class="attorney-name">James Adams</h3>
+                <div class="attorney-image">BA</div>
+                <h3 class="attorney-name">Brian Adams Adero</h3>
                 <div class="attorney-role">Senior Partner</div>
-                <p class="attorney-bio">With over 30 years of experience in corporate law, James has successfully negotiated multi-million dollar deals and provided strategic counsel to Fortune 500 companies.</p>
+                <p class="attorney-bio">Brian specializes in corporate law and litigation, bringing strategic counsel and effective representation to businesses and individuals. His dedication to client success and attention to detail have earned him a strong reputation in the legal community.</p>
             </div>
             <div class="attorney-card fade-in">
-                <div class="attorney-image">SM</div>
-                <h3 class="attorney-name">Sarah Magoma</h3>
+                <div class="attorney-image">M</div>
+                <h3 class="attorney-name">Magoma</h3>
                 <div class="attorney-role">Managing Partner</div>
-                <p class="attorney-bio">Sarah specializes in litigation and has an impressive track record of favorable verdicts in complex civil cases. Her attention to detail and courtroom presence are unmatched.</p>
-            </div>
-            <div class="attorney-card fade-in">
-                <div class="attorney-image">RK</div>
-                <h3 class="attorney-name">Robert Kariuki</h3>
-                <div class="attorney-role">Partner</div>
-                <p class="attorney-bio">Robert leads our real estate practice with expertise in commercial transactions, property development, and zoning law. He has facilitated deals worth over $500 million.</p>
+                <p class="attorney-bio">Magoma specializes in real estate law, family law, and employment matters. With a focus on practical solutions and client-centered service, Magoma has successfully handled numerous cases across various practice areas.</p>
             </div>
         </div>
     </section>
@@ -333,12 +528,12 @@
                 <div class="case-study-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
-                <h3 class="case-study-title">$50M Corporate Merger</h3>
-                <p class="case-study-description">Successfully facilitated a complex international merger involving multiple jurisdictions, resulting in a seamless transaction and significant cost savings for our client.</p>
+                <h3 class="case-study-title">Corporate Merger Success</h3>
+                <p class="case-study-description">Successfully facilitated a complex corporate merger involving multiple parties, resulting in a seamless transaction and favorable terms for our client.</p>
                 <div class="case-study-results">
                     <div class="result-item">
-                        <span class="result-value">$50M</span>
-                        <span class="result-label">Transaction Value</span>
+                        <span class="result-value">100%</span>
+                        <span class="result-label">Client Satisfaction</span>
                     </div>
                     <div class="result-item">
                         <span class="result-value">6 Months</span>
@@ -351,11 +546,11 @@
                     <i class="fas fa-home"></i>
                 </div>
                 <h3 class="case-study-title">Commercial Property Acquisition</h3>
-                <p class="case-study-description">Navigated complex zoning regulations and negotiated favorable terms for a $25M commercial property acquisition, saving the client over $2M in potential costs.</p>
+                <p class="case-study-description">Navigated complex zoning regulations and negotiated favorable terms for a commercial property acquisition, ensuring a smooth transaction and protecting the client's interests.</p>
                 <div class="case-study-results">
                     <div class="result-item">
-                        <span class="result-value">$2M</span>
-                        <span class="result-label">Cost Savings</span>
+                        <span class="result-value">100%</span>
+                        <span class="result-label">Success Rate</span>
                     </div>
                     <div class="result-item">
                         <span class="result-value">100%</span>
@@ -647,16 +842,24 @@
 
     <!-- Floating Action Buttons -->
     <div class="floating-actions">
+        <a href="{{ route('book-appointment') }}" class="fab-btn fab-booking" title="Book Appointment">
+            <span class="ripple-effect"></span>
+            <i class="fas fa-calendar-check"></i>
+        </a>
         <a href="tel:+254700123456" class="fab-btn fab-phone" title="Call Us">
+            <span class="ripple-effect"></span>
             <i class="fas fa-phone"></i>
         </a>
         <button class="fab-btn fab-whatsapp" id="whatsappPopupBtn" title="WhatsApp Us">
+            <span class="ripple-effect"></span>
             <i class="fab fa-whatsapp"></i>
         </button>
         <a href="#contact" class="fab-btn fab-email" title="Contact Us">
+            <span class="ripple-effect"></span>
             <i class="fas fa-envelope"></i>
         </a>
         <button class="fab-btn fab-scroll-top" id="scrollToTop" title="Back to Top">
+            <span class="ripple-effect"></span>
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>

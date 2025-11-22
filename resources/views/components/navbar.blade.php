@@ -25,10 +25,13 @@
 </div>
 
 <!-- Main Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent site-navbar">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('assets/images/logo_law.jpg') }}" alt="Adams & Magoma Advocates Logo" class="logo-image">
+            <div class="brand-text d-none d-md-flex flex-column">
+                <span class="brand-name">Adams &amp; Magoma Advocates</span>
+            </div>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,13 +49,20 @@
                     <i class="fas fa-map-marker-alt me-1"></i>
                     <span class="text-light">Nairobi CBD, Kenya</span>
                 </div>
-                <div class="contact-item-mobile text-center">
+                <div class="contact-item-mobile text-center mb-3">
                     <i class="fas fa-envelope me-1"></i>
                     <a href="mailto:info@adamsmagomaadvocates.com" class="text-light text-decoration-none">info@adamsmagomaadvocates.com</a>
                 </div>
+                <!-- Mobile Theme Toggle -->
+                <div class="mobile-theme-toggle text-center">
+                    <button class="theme-toggle-btn-mobile" id="themeToggleMobile" aria-label="Toggle theme">
+                        <i class="fas fa-moon me-2" id="themeIconMobile"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
             </div>
 
-            <ul class="navbar-nav me-auto justify-content-center">
+            <ul class="navbar-nav me-auto justify-content-center flex-grow-1">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
                         <span>Home</span>
@@ -69,13 +79,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#attorneys">
-                        <span>Attorneys</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#testimonials">
-                        <span>Testimonials</span>
+                    <a class="nav-link {{ request()->routeIs('resources') ? 'active' : '' }}" href="{{ route('resources') }}">
+                        <span>Resources</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -89,9 +94,32 @@
                     </a>
                 </li>
             </ul>
-            <div class="d-flex">
-                <a href="{{ route('contact') }}" class="btn btn-outline-light me-2">Schedule Consultation</a>
+            <div class="navbar-cta-group d-none d-lg-flex align-items-center">
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle Light/Dark Mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <a href="{{ route('book-appointment') }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-calendar-check me-1"></i>
+                    <span>Book Appointment</span>
+                </a>
             </div>
+            
         </div>
     </div>
 </nav>
+
+<!-- Mobile Quick Action Bar -->
+<div class="mobile-action-bar d-lg-none">
+    <a href="tel:+254700123456" class="mobile-action">
+        <i class="fas fa-phone"></i>
+        <span>Call Us</span>
+    </a>
+    <a href="https://wa.me/254700123456" target="_blank" rel="noopener" class="mobile-action">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+    <a href="{{ route('book-appointment') }}" class="mobile-action">
+        <i class="fas fa-calendar-check"></i>
+        <span>Book Appointment</span>
+    </a>
+</div>

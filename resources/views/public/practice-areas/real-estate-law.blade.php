@@ -208,11 +208,11 @@
         <div class="attorneys-grid" style="max-width: 1000px; margin: 0 auto;">
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">MM</div>
+                    <div class="attorney-placeholder">M</div>
                 </div>
-                <h3 class="attorney-name">Margaret Magoma</h3>
+                <h3 class="attorney-name">Magoma</h3>
                 <div class="attorney-role">Partner & Head of Real Estate Law</div>
-                <p class="attorney-bio">Leading property transactions and development projects with 18+ years of experience in real estate law and commercial conveyancing.</p>
+                <p class="attorney-bio">Leading property transactions and development projects with expertise in real estate law and commercial conveyancing.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Notary Public</span>
@@ -221,11 +221,11 @@
 
             <div class="attorney-card fade-in">
                 <div class="attorney-image">
-                    <div class="attorney-placeholder">JA</div>
+                    <div class="attorney-placeholder">BA</div>
                 </div>
-                <h3 class="attorney-name">James Adams</h3>
+                <h3 class="attorney-name">Brian Adams Adero</h3>
                 <div class="attorney-role">Senior Partner & Property Litigation Specialist</div>
-                <p class="attorney-bio">Expert in property disputes and commercial litigation with extensive experience in complex real estate conflicts and arbitration.</p>
+                <p class="attorney-bio">Expert in property disputes and commercial litigation with strong experience in complex real estate conflicts and arbitration.</p>
                 <div class="attorney-credentials">
                     <span class="credential">LLB (University of Nairobi)</span>
                     <span class="credential">Certified Arbitrator</span>
@@ -372,10 +372,20 @@
     <section class="section cta-section">
         <div class="bg-pattern"></div>
         <h2 class="cta-title">Need Real Estate Law <span>Assistance?</span></h2>
-        <p class="cta-description">Contact us today for expert guidance on your property legal matters.</p>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="{{ route('contact') }}" class="btn btn-primary" style="margin-right: 1rem;">Schedule Consultation</a>
-            <a href="tel:+254700123456" class="btn btn-secondary">Call +254 700 123 456</a>
+        <p class="cta-description">Get started today with a free case assessment or book a consultation with our real estate law experts.</p>
+        <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ route('book-appointment') }}" class="btn btn-primary">
+                <span>Book Appointment</span>
+                <i class="fas fa-calendar-check"></i>
+            </a>
+            <a href="{{ route('case-evaluation') }}" class="btn btn-secondary">
+                <span>Get Free Assessment</span>
+                <i class="fas fa-clipboard-check"></i>
+            </a>
+            <a href="tel:+254700123456" class="btn btn-outline-light">
+                <span>Call Us</span>
+                <i class="fas fa-phone"></i>
+            </a>
         </div>
     </section>
 

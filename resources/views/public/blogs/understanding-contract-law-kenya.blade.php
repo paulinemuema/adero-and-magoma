@@ -1,6 +1,70 @@
 @extends('layouts.public')
 
 @section('title', 'Understanding Contract Law in Kenya | Adams & Magoma Advocates')
+@section('description', 'Comprehensive guide to contract law in Kenya. Learn about essential elements, types of contracts, common disputes, and how to protect your business interests. Expert legal advice from Adams & Magoma Advocates.')
+@section('keywords', 'contract law Kenya, business contracts, contract disputes Kenya, legal contracts, contract law guide, Kenyan contract law')
+
+@push('schema')
+<script type="application/ld+json">
+{!! json_encode([
+  '@context' => 'https://schema.org',
+  '@graph' => [
+    [
+      '@type' => 'Article',
+      'headline' => 'Understanding Contract Law in Kenya: Essential Guide for Businesses',
+      'description' => 'Comprehensive guide to contract law in Kenya covering essential elements, types of contracts, common disputes, and business protection strategies.',
+      'image' => 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      'datePublished' => '2025-12-15',
+      'dateModified' => '2025-12-15',
+      'author' => [
+        '@type' => 'Person',
+        'name' => 'Brian Adams Adero',
+        'jobTitle' => 'Senior Partner & Corporate Law Specialist'
+      ],
+      'publisher' => [
+        '@type' => 'Organization',
+        'name' => 'Adams & Magoma Advocates',
+        'logo' => [
+          '@type' => 'ImageObject',
+          'url' => asset('assets/images/logo_law.jpg')
+        ]
+      ],
+      'mainEntityOfPage' => [
+        '@type' => 'WebPage',
+        '@id' => url()->current()
+      ],
+      'articleSection' => 'Corporate Law',
+      'keywords' => 'contract law Kenya, business contracts, contract disputes, legal contracts',
+      'wordCount' => '1200',
+      'timeRequired' => 'PT5M'
+    ],
+    [
+      '@type' => 'BreadcrumbList',
+      'itemListElement' => [
+        [
+          '@type' => 'ListItem',
+          'position' => 1,
+          'name' => 'Home',
+          'item' => route('home')
+        ],
+        [
+          '@type' => 'ListItem',
+          'position' => 2,
+          'name' => 'Blogs',
+          'item' => route('blogs')
+        ],
+        [
+          '@type' => 'ListItem',
+          'position' => 3,
+          'name' => 'Understanding Contract Law in Kenya',
+          'item' => url()->current()
+        ]
+      ]
+    ]
+  ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+@endpush
 
 @section('content')
     <x-navbar />
@@ -52,10 +116,10 @@
                 
                 <div class="article-author-header">
                     <div class="author-avatar-small">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80&q=80" alt="James Adams">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80&q=80" alt="Brian Adams Adero">
                     </div>
                     <div class="author-info-small">
-                        <h4 class="author-name">James Adams</h4>
+                        <h4 class="author-name">Brian Adams Adero</h4>
                         <p class="author-role">Senior Partner & Corporate Law Specialist</p>
                     </div>
                 </div>
@@ -234,12 +298,12 @@
                     <!-- Author Bio -->
                     <div class="article-author-bio">
                         <div class="author-bio-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80" alt="James Adams">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&h=120&q=80" alt="Brian Adams Adero">
                         </div>
                         <div class="author-bio-content">
-                            <h4>About James Adams</h4>
+                            <h4>About Brian Adams Adero</h4>
                             <p>
-                                James Adams is a Senior Partner at Adams & Magoma Advocates with over 20 years of experience in corporate and commercial law. He specializes in contract law, corporate governance, and dispute resolution.
+                                Brian Adams Adero is a Senior Partner at Adams & Magoma Advocates with expertise in corporate and commercial law. He specializes in contract law, corporate governance, and dispute resolution.
                             </p>
                             <div class="author-credentials">
                                 <span class="credential-badge">LLB (University of Nairobi)</span>
