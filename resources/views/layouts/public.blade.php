@@ -55,11 +55,28 @@
     <!-- Vite Assets -->
     @vite(['resources/css/public.css', 'resources/js/public.js'])
     
-    <!-- Production fallback - direct asset links -->
-    @if(app()->environment('production'))
-        <link rel="stylesheet" href="{{ asset('build/assets/public-hs9Cu0jg.css') }}">
-        <script type="module" src="{{ asset('build/assets/public-BVyuNFMk.js') }}"></script>
-    @endif
+    <!-- Production fallback - load from manifest if @vite fails -->
+    @production
+        @php
+            try {
+                $manifestPath = public_path('build/manifest.json');
+                if (file_exists($manifestPath)) {
+                    $manifest = json_decode(file_get_contents($manifestPath), true);
+                    $cssFile = $manifest['resources/css/public.css']['file'] ?? null;
+                    $jsFile = $manifest['resources/js/public.js']['file'] ?? null;
+                    
+                    if ($cssFile && !str_contains(request()->header('Accept', ''), 'text/html')) {
+                        echo '<link rel="stylesheet" href="' . asset('build/' . $cssFile) . '">';
+                    }
+                    if ($jsFile) {
+                        echo '<script type="module" src="' . asset('build/' . $jsFile) . '"></script>';
+                    }
+                }
+            } catch (\Exception $e) {
+                // Silently fail, @vite will handle it
+            }
+        @endphp
+    @endproduction
     
     @stack('head_meta')
     @stack('styles')
