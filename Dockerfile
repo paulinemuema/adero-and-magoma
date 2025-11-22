@@ -67,6 +67,26 @@ RUN echo '#!/bin/sh' > /start.sh && \
     echo '  echo "Creating .env file from .env.example..."' >> /start.sh && \
     echo '  cp .env.example .env || true' >> /start.sh && \
     echo 'fi' >> /start.sh && \
+    echo 'echo "Updating .env with environment variables..."' >> /start.sh && \
+    echo 'if [ -n "$APP_KEY" ]; then' >> /start.sh && \
+    echo '  echo "Setting APP_KEY from environment..."' >> /start.sh && \
+    echo '  sed -i "s|APP_KEY=.*|APP_KEY=$APP_KEY|" .env 2>/dev/null || echo "APP_KEY=$APP_KEY" >> .env' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
+    echo 'if [ -n "$APP_ENV" ]; then' >> /start.sh && \
+    echo '  sed -i "s|APP_ENV=.*|APP_ENV=$APP_ENV|" .env 2>/dev/null || echo "APP_ENV=$APP_ENV" >> .env' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
+    echo 'if [ -n "$APP_DEBUG" ]; then' >> /start.sh && \
+    echo '  sed -i "s|APP_DEBUG=.*|APP_DEBUG=$APP_DEBUG|" .env 2>/dev/null || echo "APP_DEBUG=$APP_DEBUG" >> .env' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
+    echo 'if [ -n "$APP_URL" ]; then' >> /start.sh && \
+    echo '  sed -i "s|APP_URL=.*|APP_URL=$APP_URL|" .env 2>/dev/null || echo "APP_URL=$APP_URL" >> .env' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
+    echo 'if [ -n "$DB_CONNECTION" ]; then' >> /start.sh && \
+    echo '  sed -i "s|DB_CONNECTION=.*|DB_CONNECTION=$DB_CONNECTION|" .env 2>/dev/null || echo "DB_CONNECTION=$DB_CONNECTION" >> .env' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
+    echo 'if [ -n "$DB_DATABASE" ]; then' >> /start.sh && \
+    echo '  sed -i "s|DB_DATABASE=.*|DB_DATABASE=$DB_DATABASE|" .env 2>/dev/null || echo "DB_DATABASE=$DB_DATABASE" >> .env' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
     echo 'echo "Creating database directory and file..."' >> /start.sh && \
     echo 'mkdir -p /var/www/html/database' >> /start.sh && \
     echo 'if [ ! -f /var/www/html/database/database.sqlite ]; then' >> /start.sh && \
@@ -76,8 +96,13 @@ RUN echo '#!/bin/sh' > /start.sh && \
     echo 'echo "Setting storage permissions..."' >> /start.sh && \
     echo 'chmod -R 775 storage bootstrap/cache database || true' >> /start.sh && \
     echo 'chown -R www-data:www-data storage bootstrap/cache database || true' >> /start.sh && \
-    echo 'echo "Generating application key..."' >> /start.sh && \
-    echo 'php artisan key:generate --force || true' >> /start.sh && \
+    echo 'echo "Checking application key..."' >> /start.sh && \
+    echo 'if ! grep -q "APP_KEY=base64:" .env 2>/dev/null || [ -z "$(grep "APP_KEY=base64:" .env)" ]; then' >> /start.sh && \
+    echo '  echo "Generating application key..."' >> /start.sh && \
+    echo '  php artisan key:generate --force || true' >> /start.sh && \
+    echo 'else' >> /start.sh && \
+    echo '  echo "APP_KEY already set in .env"' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
     echo 'echo "Running database migrations..."' >> /start.sh && \
     echo 'php artisan migrate --force || true' >> /start.sh && \
     echo 'echo "Clearing caches..."' >> /start.sh && \
