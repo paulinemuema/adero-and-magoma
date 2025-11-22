@@ -46,8 +46,8 @@ RUN npm ci
 COPY . .
 
 # Set permissions for storage and cache (will be set again at runtime)
-RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache && \
-    chmod -R 775 storage bootstrap/cache
+RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache database && \
+    chmod -R 775 storage bootstrap/cache database
 
 # Build frontend assets
 RUN npm run build
@@ -66,11 +66,19 @@ RUN echo '#!/bin/sh' > /start.sh && \
     echo '  echo "Creating .env file from .env.example..."' >> /start.sh && \
     echo '  cp .env.example .env || true' >> /start.sh && \
     echo 'fi' >> /start.sh && \
+    echo 'echo "Creating database directory and file..."' >> /start.sh && \
+    echo 'mkdir -p /var/www/html/database' >> /start.sh && \
+    echo 'if [ ! -f /var/www/html/database/database.sqlite ]; then' >> /start.sh && \
+    echo '  touch /var/www/html/database/database.sqlite' >> /start.sh && \
+    echo '  echo "SQLite database file created"' >> /start.sh && \
+    echo 'fi' >> /start.sh && \
     echo 'echo "Setting storage permissions..."' >> /start.sh && \
-    echo 'chmod -R 775 storage bootstrap/cache || true' >> /start.sh && \
-    echo 'chown -R www-data:www-data storage bootstrap/cache || true' >> /start.sh && \
+    echo 'chmod -R 775 storage bootstrap/cache database || true' >> /start.sh && \
+    echo 'chown -R www-data:www-data storage bootstrap/cache database || true' >> /start.sh && \
     echo 'echo "Generating application key..."' >> /start.sh && \
     echo 'php artisan key:generate --force || true' >> /start.sh && \
+    echo 'echo "Running database migrations..."' >> /start.sh && \
+    echo 'php artisan migrate --force || true' >> /start.sh && \
     echo 'echo "Clearing caches..."' >> /start.sh && \
     echo 'php artisan config:clear || true' >> /start.sh && \
     echo 'php artisan route:clear || true' >> /start.sh && \
