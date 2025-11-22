@@ -71,9 +71,17 @@
                 $cssFile = 'assets/public-hs9Cu0jg.css';
                 $jsFile = 'assets/public-BVyuNFMk.js';
             }
+            // Ensure HTTPS URLs
+            $cssUrl = asset('build/' . $cssFile);
+            $jsUrl = asset('build/' . $jsFile);
+            // Force HTTPS if APP_URL is HTTPS
+            if (config('app.url') && str_starts_with(config('app.url'), 'https://')) {
+                $cssUrl = str_replace('http://', 'https://', $cssUrl);
+                $jsUrl = str_replace('http://', 'https://', $jsUrl);
+            }
         @endphp
-        <link rel="stylesheet" href="{{ url('build/' . $cssFile) }}">
-        <script type="module" src="{{ url('build/' . $jsFile) }}"></script>
+        <link rel="stylesheet" href="{{ $cssUrl }}">
+        <script type="module" src="{{ $jsUrl }}"></script>
     @else
         @vite(['resources/css/public.css', 'resources/js/public.js'])
     @endif
