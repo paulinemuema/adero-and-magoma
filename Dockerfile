@@ -49,7 +49,8 @@ COPY . .
 RUN mkdir -p storage/framework/{sessions,views,cache} storage/logs bootstrap/cache database && \
     chmod -R 775 storage bootstrap/cache database
 
-# Build frontend assets
+# Build frontend assets for production
+ENV NODE_ENV=production
 RUN npm run build
 
 # Optimize Laravel (will be done at runtime if needed)
