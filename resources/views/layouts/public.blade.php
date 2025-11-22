@@ -55,6 +55,12 @@
     <!-- Vite Assets -->
     @vite(['resources/css/public.css', 'resources/js/public.js'])
     
+    <!-- Production fallback - direct asset links -->
+    @if(app()->environment('production'))
+        <link rel="stylesheet" href="{{ asset('build/assets/public-hs9Cu0jg.css') }}">
+        <script type="module" src="{{ asset('build/assets/public-BVyuNFMk.js') }}"></script>
+    @endif
+    
     @stack('head_meta')
     @stack('styles')
     @stack('schema')
